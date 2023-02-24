@@ -1,0 +1,22 @@
+img = imread('woman.jpg');   
+// Coloque o nome de qualquer arquivo de imagem e sua extensão .jpg no lugar de  - woman.jpg 
+//é importante que a imagem esteja na mesma pasta ou diretório do código.
+
+red_color = img(:,:,1);
+blue_color = img(:,:,2);
+green_color = img(:,:,3);
+
+red_color = medfilt2(red_color , [5 5]); 
+blue_color = medfilt2(blue_color , [5 5]);
+green_color = medfilt2(green_color , [5 5]);
+
+// Onde se tem [5 5] pode-se alterar o inteiro para aumentar ou diminuir a suavização da imagem, por exemplo: 
+//[3 3] a imagem ficará menos suavizada.
+
+img_resultante = cat (3, red_color, blue_color, green_color);
+
+subplot(2,1,1);
+imshow(img);
+
+subplot(2,1,2);
+imshow(img_resultante);
